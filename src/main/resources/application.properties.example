@@ -1,0 +1,10 @@
+spring.application.name=geocoder-task
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url=
+spring.datasource.username=
+spring.datasource.password=
+spring.liquibase.change-log=classpath:/db/changelog/changelog-master.xml
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.open-in-view=false
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
