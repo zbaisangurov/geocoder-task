@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 @SpringBootApplication
 public class GeocoderTaskApplication {
-    //private static final Logger logger = LoggerFactory.getLogger(GeocoderTaskApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(GeocoderTaskApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(GeocoderTaskApplication.class, args);
