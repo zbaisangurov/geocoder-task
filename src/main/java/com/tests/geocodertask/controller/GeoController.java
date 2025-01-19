@@ -17,7 +17,7 @@ public class GeoController {
     }
 
     @GetMapping("/coordinates")
-    public String getCoordinates(@RequestParam Map<String, String> params){
+    public Map<String, String> getCoordinates(@RequestParam Map<String, String> params){
         params.forEach((key, value) -> System.out.println(key + " = " + value));
         return openCage.coordinatesToLocation(params);
     }
