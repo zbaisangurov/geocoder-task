@@ -3,14 +3,25 @@
                    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
-    <changeSet id="create-table-locations" author="zbaisangurov">
+    <changeSet id="1-create-table-locations" author="zbaisangurov">
         <createTable tableName="locations">
             <column name="id" type="int" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="address" type="varchar(250)"/>
+            <column name="type" type="varchar(50)">
+                <constraints nullable="false" checkConstraint="type IN ('FORWARD','REVERSE') "/>
+            </column>
+            <column name="address" type="varchar(250)">
+                <constraints nullable="false"/>
+            </column>
             <column name="latitude" type="double"/>
             <column name="longitude" type="double"/>
+            <column name="created_at" type="timestamp" defaultValueComputed="current_timestamp">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
+        <addNotNullConstraint tableName="locations" columnName="type"/>
+
+
     </changeSet>
 </databaseChangeLog>

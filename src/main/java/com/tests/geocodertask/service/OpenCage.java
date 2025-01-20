@@ -13,16 +13,18 @@ import java.util.Map;
 public class OpenCage {
     @Value("${opencage.api.key}")
     private String apiKey;
-    public Map<String,String> locationToCoordinates(String address){
+
+    public Map<String,Double> locationToCoordinates(String address){
         JOpenCageGeocoder jOpenCageGeocoder = new JOpenCageGeocoder(apiKey);
         JOpenCageForwardRequest request = new JOpenCageForwardRequest(address);
         JOpenCageResponse response = jOpenCageGeocoder.forward(request);
         JOpenCageLatLng firstResultLatLng = response.getFirstPosition();
         return Map.of(
-                "lat", firstResultLatLng.getLat().toString(),
-                "lng", firstResultLatLng.getLng().toString()
+                "lat", firstResultLatLng.getLat(),
+                "lng", firstResultLatLng.getLng()
         );
     }
+
     public Map<String,String> coordinatesToLocation(Map<String,String> params){
         JOpenCageGeocoder jOpenCageGeocoder = new JOpenCageGeocoder(apiKey);
         JOpenCageReverseRequest request = new JOpenCageReverseRequest(
